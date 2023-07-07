@@ -18,8 +18,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          Container(
+            height: 90,
+            width: 260,
+            color: Colors.black,
+          ),
           GridView.builder(
             padding: const EdgeInsets.all(15),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -38,22 +43,31 @@ class _MyAppState extends State<MyApp> {
             },
             shrinkWrap: true,
           ),
-          SizedBox(
-            width: 360,
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                    child: SizedBox(
-                      height: 80,
-                      child: Card(
-                        color: Colors.yellow,
-                      ),
-                    ),
-                  );
-                }),
+          Column(
+            children: [
+              Container(
+                height: 90,
+                width: 260,
+                color: Colors.black,
+              ),
+              SizedBox(
+                width: 360,
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: 3,
+                    itemBuilder: (context, index) {
+                      return const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10.0),
+                        child: SizedBox(
+                          height: 80,
+                          child: Card(
+                            color: Colors.yellow,
+                          ),
+                        ),
+                      );
+                    }),
+              ),
+            ],
           ),
         ],
       ),
