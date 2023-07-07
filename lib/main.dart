@@ -17,35 +17,45 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: GridView.builder(
-          padding: const EdgeInsets.all(15),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, //カラム数
-            crossAxisSpacing: 20,
-            // Widget間のスペース（上下）
-            mainAxisSpacing: 20,
-            // 全体の余白
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          GridView.builder(
+            padding: const EdgeInsets.all(15),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, //カラム数
+              crossAxisSpacing: 20,
+              // Widget間のスペース（上下）
+              mainAxisSpacing: 20,
+              // 全体の余白
+            ),
+            itemCount: 6, //要素数
+            itemBuilder: (context, index) {
+              //要素を戻り値で返す
+              return Container(
+                color: Colors.blue,
+              );
+            },
+            shrinkWrap: true,
           ),
-          itemCount: 6, //要素数
-          itemBuilder: (context, index) {
-            //要素を戻り値で返す
-            return Container(
-              color: Colors.blue,
-            );
-          },
-          shrinkWrap: true,
-        ),
+          Flexible(
+            child: ListView.separated(
+              itemBuilder: (context, index) {
+                return Container(
+                  color: Colors.yellow,
+                  height: 80,
+                );
+              },
+              separatorBuilder: (context, index) {
+                return const SizedBox(
+                  height: 30,
+                );
+              },
+              itemCount: 3,
+            ),
+          ),
+        ],
       ),
-      // child: ListView.builder(　　//※ここでエラーが出ます
-      //   shrinkWrap: true,
-      //   itemBuilder: (context, index) {
-      //     return ListTile(
-      //       tileColor: Colors.blue[50],
-      //     );
-      //   },
-      //   itemCount: 3,
-      // ),
     );
   }
 }
