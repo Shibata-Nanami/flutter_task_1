@@ -39,14 +39,14 @@ class _MyAppState extends State<MyApp> {
             shrinkWrap: true,
           ),
           SizedBox(
+            width: 360,
             child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: 3,
                 itemBuilder: (context, index) {
-                  return const Align(
-                    alignment: Alignment.center,
+                  return const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
                     child: SizedBox(
-                      width: 370,
                       height: 80,
                       child: Card(
                         color: Colors.yellow,
