@@ -38,21 +38,22 @@ class _MyAppState extends State<MyApp> {
             },
             shrinkWrap: true,
           ),
-          Flexible(
-            child: ListView.separated(
-              itemBuilder: (context, index) {
-                return Container(
-                  color: Colors.yellow,
-                  height: 80,
-                );
-              },
-              separatorBuilder: (context, index) {
-                return const SizedBox(
-                  height: 30,
-                );
-              },
-              itemCount: 3,
-            ),
+          SizedBox(
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return const Align(
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                      width: 370,
+                      height: 80,
+                      child: Card(
+                        color: Colors.yellow,
+                      ),
+                    ),
+                  );
+                }),
           ),
         ],
       ),
