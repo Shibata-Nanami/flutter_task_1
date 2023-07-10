@@ -18,68 +18,71 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 20),
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20),
             child: Column(
               children: [
-                Container(
-                  height: 90,
-                  width: 260,
-                  color: Colors.black,
-                ),
+                const _Blackbox(),
                 GridView.builder(
                   padding: const EdgeInsets.all(25),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3, //カラム数
-                    crossAxisSpacing: 20,
+                    //カラム数
+                    crossAxisCount: 3,
                     // Widget間のスペース（上下）
-                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 20,
                     // 全体の余白
+                    mainAxisSpacing: 20,
                   ),
-                  itemCount: 6, //要素数
+                  //要素数
+                  itemCount: 6,
+                  //要素を戻り値で返す
                   itemBuilder: (context, index) {
-                    //要素を戻り値で返す
                     return Container(
                       color: Colors.blue,
                     );
                   },
                   shrinkWrap: true,
                 ),
-                Column(
-                  children: [
-                    Container(
-                      height: 90,
-                      width: 260,
-                      color: Colors.black,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: SizedBox(
-                        width: 360,
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: 3,
-                            itemBuilder: (context, index) {
-                              return const Padding(
-                                padding: EdgeInsets.only(bottom: 20),
-                                child: SizedBox(
-                                  height: 80,
-                                  child: Card(
-                                    color: Colors.yellow,
-                                  ),
-                                ),
-                              );
-                            }),
-                      ),
-                    ),
-                  ],
+                const _Blackbox(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: SizedBox(
+                    width: 360,
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: 3,
+                        itemBuilder: (context, index) {
+                          return const Padding(
+                            padding: EdgeInsets.only(bottom: 20),
+                            child: SizedBox(
+                              height: 80,
+                              child: Card(
+                                color: Colors.yellow,
+                              ),
+                            ),
+                          );
+                        }),
+                  ),
                 ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class _Blackbox extends StatelessWidget {
+  const _Blackbox();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 90,
+      width: 260,
+      color: Colors.black,
     );
   }
 }
